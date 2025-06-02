@@ -30,4 +30,18 @@ public class ExplorerSearchTest {
 
         assertArrayEquals(expected, ExplorerSearch.start(island));
     }
+
+    @Test
+    public void testStart_topLeft() {
+        int[][] island = {
+                { 0, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 1, 3, 1 },
+                { 1, 1, 1, 1, 3, 3 },
+                { 3, 1, 2, 1, 3, 1 },
+                { 1, 1, 1, 2, 1, 1 },
+        };
+        int[] expected = { 0, 0 };
+
+        assertArrayEquals(expected, ExplorerSearch.start(island));
+    }
 }
