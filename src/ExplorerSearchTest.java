@@ -44,4 +44,17 @@ public class ExplorerSearchTest {
 
         assertArrayEquals(expected, ExplorerSearch.start(island));
     }
+
+    @Test
+    public void testStart_none() {
+        int[][] island = {
+                { 1, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 1, 3, 1 },
+                { 1, 1, 1, 1, 3, 3 },
+                { 3, 1, 2, 1, 1, 1 },
+                { 1, 1, 1, 2, 1, 1 },
+        };
+
+        assertThrows(IllegalArgumentException.class, () -> ExplorerSearch.start(island));
+    }
 }
