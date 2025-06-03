@@ -98,4 +98,21 @@ public class ExplorerSearchTest {
         assertTrue(move.get(0)[0] == 3 && move.get(0)[1] == 5);
         assertTrue(move.get(1)[0] == 4 && move.get(1)[1] == 4);
     }
+
+    @Test
+    public void testMoves_mixedBlocks() {
+        int[][] island = {
+                { 1, 1, 0, 3, 1, 1 },
+                { 3, 2, 2, 1, 3, 1 },
+                { 1, 1, 1, 3, 1, 2 },
+                { 3, 1, 2, 1, 1, 1 },
+                { 1, 3, 1, 1, 1, 1 },
+        };
+
+        int[] location = { 0, 2 };
+        List<int[]> move = ExplorerSearch.moves(island, location);
+
+        assertEquals(1, move.size());
+        assertTrue(move.get(0)[0] == 0 && move.get(0)[1] == 1);
+    }
 }
