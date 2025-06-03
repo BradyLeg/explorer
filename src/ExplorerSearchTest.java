@@ -18,8 +18,32 @@ public class ExplorerSearchTest {
         assertEquals(14, actual);
     }
 
-    // Add more tests here!
-    // Come up with varied cases
+    @Test
+    public void testReachableArea_noneReachable() {
+        int[][] island = {
+                { 1, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 1, 3, 1 },
+                { 1, 1, 1, 1, 3, 3 },
+                { 3, 1, 2, 1, 2, 0 },
+                { 1, 1, 1, 2, 1, 3 },
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(1, actual);
+    }
+
+    @Test
+    public void testReachableArea_singlePath() {
+        int[][] island = {
+                { 1, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 2, 3, 1 },
+                { 2, 1, 1, 1, 3, 3 },
+                { 3, 1, 2, 1, 0, 2 },
+                { 1, 1, 3, 2, 3, 2 },
+        };
+        int actual = ExplorerSearch.reachableArea(island);
+        assertEquals(8, actual);
+    }
+
     @Test
     public void testStart_originalStart() {
         int[][] island = {
