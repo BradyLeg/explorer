@@ -35,6 +35,38 @@ public class ExplorerSearch {
         return -1;
     }
 
+    public static List<int[]> moves(int[][] island, int[] location) {
+        int r = location[0];
+        int c = location[1];
+        List<int[]> next = new ArrayList<>();
+
+        int newR = r - 1;
+        int newC = c;
+        if (newR >= 0 && island[newR][newC] == 1) {
+            next.add(new int[] { newR, newC });
+        }
+
+        newR = r + 1;
+        newC = c;
+        if (newR < island.length && island[newR][newC] == 1) {
+            next.add(new int[] { newR, newC });
+        }
+
+        newR = r;
+        newC = c - 1;
+        if (newC >= 0 && island[newR][newC] == 1) {
+            next.add(new int[] { newR, newC });
+        }
+
+        newR = r;
+        newC = c + 1;
+        if (newC < island[newR].length && island[newR][newC] == 1) {
+            next.add(new int[] { newR, newC });
+        }
+
+        return next;
+    }
+
     public static int[] start(int[][] island) {
 
         for (int r = 0; r < island.length; r++) {

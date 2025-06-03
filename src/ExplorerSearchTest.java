@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import org.junit.Test;
 
 public class ExplorerSearchTest {
@@ -56,5 +59,43 @@ public class ExplorerSearchTest {
         };
 
         assertThrows(IllegalArgumentException.class, () -> ExplorerSearch.start(island));
+    }
+
+    @Test
+    public void testMoves_allPossible() {
+        int[][] island = {
+                { 1, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 1, 3, 1 },
+                { 1, 1, 1, 3, 1, 2 },
+                { 3, 1, 2, 1, 0, 1 },
+                { 1, 1, 1, 2, 1, 2 },
+        };
+
+        int[] location = { 3, 4 };
+        List<int[]> move = ExplorerSearch.moves(island, location);
+
+        assertEquals(4, move.size());
+        assertTrue(move.get(0)[0] == 2 && move.get(0)[1] == 4);
+        assertTrue(move.get(1)[0] == 4 && move.get(1)[1] == 4);
+        assertTrue(move.get(2)[0] == 3 && move.get(2)[1] == 3);
+        assertTrue(move.get(3)[0] == 3 && move.get(3)[1] == 5);
+    }
+
+    @Test
+    public void testMoves_bottomRightCorner() {
+        int[][] island = {
+                { 1, 1, 1, 3, 1, 1 },
+                { 3, 2, 3, 1, 3, 1 },
+                { 1, 1, 1, 3, 1, 2 },
+                { 3, 1, 2, 1, 1, 1 },
+                { 1, 1, 1, 2, 1, 0 },
+        };
+
+        int[] location = { 4, 5 };
+        List<int[]> move = ExplorerSearch.moves(island, location);
+
+        assertEquals(2, move.size());
+        assertTrue(move.get(0)[0] == 3 && move.get(0)[1] == 5);
+        assertTrue(move.get(1)[0] == 4 && move.get(1)[1] == 4);
     }
 }
