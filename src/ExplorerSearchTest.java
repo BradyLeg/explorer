@@ -115,4 +115,5 @@ public class ExplorerSearchTest {
         assertEquals(1, move.size());
         assertTrue(move.get(0)[0] == 0 && move.get(0)[1] == 1);
     }
+
 }
